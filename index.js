@@ -9,7 +9,7 @@ app.use(cors());
 
 app.use(express.json());
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 // console.log(process.env.USER_NAME, process.env.DB_KEY);
 
@@ -61,6 +61,13 @@ async function run() {
       const newCart = req.body;
       console.log(newCart);
       const result = await cartCollection.insertOne(newCart);
+      res.send(result);
+    });
+
+    app.delete("/cart/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await cartCollection.deleteOne(query);
       res.send(result);
     });
   } finally {
