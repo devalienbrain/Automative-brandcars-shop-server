@@ -5,7 +5,6 @@ const port = process.env.PORT || 3000;
 const cors = require("cors");
 require("dotenv").config();
 
-
 app.use(cors());
 
 app.use(express.json());
@@ -37,6 +36,8 @@ async function run() {
 
     const productCollection = client.db("productDB").collection("product");
 
+    const cartCollection = client.db("cartDB").collection("cart");
+
     app.get("/products", async (req, res) => {
       const cursor = productCollection.find();
       const result = await cursor.toArray();
@@ -49,6 +50,19 @@ async function run() {
       const result = await productCollection.insertOne(newProduct);
       res.send(result);
     });
+
+    app.get("/cart", async (req, res) => {
+      const cursor = cartCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    app.post("/cart", async (req, res) => {
+      const newCart = req.body;
+      console.log(newCart);
+      const result = await cartCollection.insertOne(newCart);
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
@@ -57,7 +71,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("SERVER STARTS!");
+  res.send("SERVER HOME!");
 });
 
 app.listen(port, () => {
