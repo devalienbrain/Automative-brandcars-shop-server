@@ -32,7 +32,7 @@ const brandAd = [
     bgimg3: "https://i.ibb.co/qMYQM2s/bmwad3.jpg",
   },
   {
-    brand: " FORD",
+    brand: "FORD",
     bgimg1: "https://i.ibb.co/rtMVR5r/fordad1.jpg",
     bgimg2: "https://i.ibb.co/5MJtjfJ/fordad2.jpg",
     bgimg3: "https://i.ibb.co/Z8KxBJL/fordad3.jpg",
