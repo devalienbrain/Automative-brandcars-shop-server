@@ -24,6 +24,46 @@ const client = new MongoClient(uri, {
   },
 });
 
+const brandAd = [
+  {
+    brand: "BMW",
+    bgimg1: "https://i.ibb.co/QPCmzMW/bmwad1.jpg",
+    bgimg2: "https://i.ibb.co/fqQ1NP2/bmwad2.jpg",
+    bgimg3: "https://i.ibb.co/qMYQM2s/bmwad3.jpg",
+  },
+  {
+    brand: " FORD",
+    bgimg1: "https://i.ibb.co/rtMVR5r/fordad1.jpg",
+    bgimg2: "https://i.ibb.co/5MJtjfJ/fordad2.jpg",
+    bgimg3: "https://i.ibb.co/Z8KxBJL/fordad3.jpg",
+  },
+  {
+    brand: "HONDA",
+    bgimg1: "https://i.ibb.co/YhBX1Nb/hondaad1.jpg",
+    bgimg2: "https://i.ibb.co/kmTbT9Z/hondaad2.jpg",
+    bgimg3: "https://i.ibb.co/xsq9CXM/hondaad3.jpg",
+  },
+  {
+    brand: "MERCEDES-BENZ",
+    bgimg1: "https://i.ibb.co/X22RzWK/mercedesad01.jpg",
+    bgimg2: "https://i.ibb.co/T1Symxz/mercedesad02.jpg",
+    bgimg3: "https://i.ibb.co/9YBLCJz/mercedesad03.jpg",
+  },
+  {
+    brand: "TOYOTA",
+    bgimg1: "https://i.ibb.co/RGXzGHB/toyotaad01.jpg",
+    bgimg2: "https://i.ibb.co/NZ61NPC/toyotaad02.jpg",
+    bgimg3: "https://i.ibb.co/BGjNCjD/toyotaad03.jpg",
+  },
+  {
+    brand: "TESLA",
+
+    bgimg1: "https://i.ibb.co/Mn3G9s7/teslaad01.jpg",
+    bgimg2: "https://i.ibb.co/KK99x40/teslaad02.jpg",
+    bgimg3: "https://i.ibb.co/kG9DWWY/teslaad03.jpg",
+  },
+];
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -111,6 +151,10 @@ run().catch(console.dir);
 
 app.get("/", (req, res) => {
   res.send("AUTOMOTIVE BRAND SHOP SERVER HOME!");
+});
+
+app.get("/brandad", (req, res) => {
+  res.send(brandAd);
 });
 
 app.listen(port, () => {
